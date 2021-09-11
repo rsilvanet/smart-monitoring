@@ -2,7 +2,7 @@
 
 namespace SmartMonitoring.Domain.ValueObjects
 {
-    public class Name
+    public struct Name
     {
         public const short MIN_LENGTH = 4;
         public const short MAX_LENGTH = 30;
@@ -21,7 +21,7 @@ namespace SmartMonitoring.Domain.ValueObjects
             _value = value.Trim();
         }
 
-        private bool IsValid(string value)
+        private static bool IsValid(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {

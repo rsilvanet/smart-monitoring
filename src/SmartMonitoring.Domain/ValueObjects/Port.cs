@@ -2,7 +2,7 @@
 
 namespace SmartMonitoring.Domain.ValueObjects
 {
-    public class Port
+    public struct Port
     {
         public const int MIN_PORT_NUMBER = 1;
         public const int MAX_PORT_NUMBER = 65535;
@@ -19,7 +19,7 @@ namespace SmartMonitoring.Domain.ValueObjects
             _value = value;
         }
 
-        private bool IsValid(int value)
+        private static bool IsValid(int value)
         {
             return value >= MIN_PORT_NUMBER && value <= MAX_PORT_NUMBER;
         }

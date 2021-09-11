@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace SmartMonitoring.Domain.ValueObjects
 {
-    public class Label
+    public struct Label
     {
         public const string REGEX = "^[a-zA-Z0-9]+:[a-zA-Z0-9]+$";
 
@@ -21,7 +21,7 @@ namespace SmartMonitoring.Domain.ValueObjects
             _value = value;
         }
 
-        private bool IsValid(string value)
+        private static bool IsValid(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {

@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace SmartMonitoring.Domain.ValueObjects
 {
-    public class Email
+    public struct Email
     {
         private readonly string _value;
 
@@ -19,7 +19,7 @@ namespace SmartMonitoring.Domain.ValueObjects
             _value = value.Trim();
         }
 
-        private bool IsValid(string value)
+        private static bool IsValid(string value)
         {
             try
             {
