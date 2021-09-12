@@ -21,7 +21,7 @@ namespace SmartMonitoring.Business.Tests.UseCases
             _updateServiceUseCase = new UpdateServiceUseCase(_serviceRepositoryMock.Object);
         }
 
-        private Service GetExistentService(string name = "service1", int port = 8080)
+        private Service CreateService(string name = "service1", int port = 8080)
         {
             var labels = new List<Label>
             {
@@ -45,13 +45,14 @@ namespace SmartMonitoring.Business.Tests.UseCases
             });
 
             _serviceRepositoryMock.Verify(x => x.GetByNameAsync(nonExistentServiceName), Times.Once);
+            _serviceRepositoryMock.Verify(x => x.ExistsAsync(It.IsAny<Name>()), Times.Never);
             _serviceRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Service>()), Times.Never);
         }
 
         [Fact]
         public async void ShouldThrowIfNameIsAlreadyInUse()
         {
-            var currentService = GetExistentService(name: "currentName");
+            var currentService = CreateService(name: "currentName");
             var command = TestSaveServiceCommand.Create(name: "nameAlreadyInUseByOtherService");
 
             _serviceRepositoryMock.Setup(x => x.GetByNameAsync(currentService.Name)).ReturnsAsync(currentService);
@@ -70,7 +71,7 @@ namespace SmartMonitoring.Business.Tests.UseCases
         [Fact]
         public async void ShouldUpdateServiceAndCallRepository()
         {
-            var currentService = GetExistentService(name: "service1", port: 8080);
+            var currentService = CreateService(name: "service1", port: 8080);
             var command = TestSaveServiceCommand.Create(name: "service2", port: 8081);
 
             _serviceRepositoryMock.Setup(x => x.GetByNameAsync(currentService.Name)).ReturnsAsync(currentService);
