@@ -9,6 +9,21 @@ namespace SmartMonitoring.Domain
     {
         public Service(Name name, Port port, Email maintainer, IEnumerable<Label> labels)
         {
+            Update(name, port, maintainer, labels);
+        }
+
+        public Name Name { get; private set; }
+        public Port Port { get; private set; }
+        public Email Maintainer { get; private set; }
+        public IEnumerable<Label> Labels { get; private set; }
+
+        private bool HasAny(IEnumerable<Label> labels)
+        {
+            return labels?.Any() == true;
+        }
+
+        public void Update(Name name, Port port, Email maintainer, IEnumerable<Label> labels)
+        {
             if (!HasAny(labels))
             {
                 throw new EmptyLabelListException();
@@ -18,16 +33,6 @@ namespace SmartMonitoring.Domain
             Port = port;
             Maintainer = maintainer;
             Labels = labels;
-        }
-
-        public Name Name { get; }
-        public Port Port { get; }
-        public Email Maintainer { get; }
-        public IEnumerable<Label> Labels { get; }
-
-        private bool HasAny(IEnumerable<Label> labels)
-        {
-            return labels?.Any() == true;
         }
     }
 }
