@@ -22,7 +22,7 @@ namespace SmartMonitoring.Domain.Tests
         [InlineData("test@gmail.com")]
         public void ShouldCreateForValidValue(string value)
         {
-            Assert.Equal(value, new Email(value).ToString());
+            Assert.Equal(value, new Email(value));
         }
 
         [Theory]
@@ -30,7 +30,7 @@ namespace SmartMonitoring.Domain.Tests
         [InlineData("test@gmail.com ")]
         public void ShouldTrimTheValue(string value)
         {
-            Assert.Equal(value.Trim(), new Email(value).ToString());
+            Assert.Equal(value.Trim(), new Email(value));
         }
     }
 }

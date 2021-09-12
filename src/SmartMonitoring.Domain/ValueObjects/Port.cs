@@ -24,9 +24,14 @@ namespace SmartMonitoring.Domain.ValueObjects
             return value >= MIN_PORT_NUMBER && value <= MAX_PORT_NUMBER;
         }
 
-        public override string ToString()
+        public static implicit operator Port(int value)
         {
-            return _value.ToString();
+            return new Port(value);
+        }
+
+        public static implicit operator int(Port port)
+        {
+            return port._value;
         }
     }
 }

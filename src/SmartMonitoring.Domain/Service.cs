@@ -11,7 +11,7 @@ namespace SmartMonitoring.Domain
         {
             if (!HasAny(labels))
             {
-                throw new InvalidLabelException();
+                throw new EmptyLabelListException();
             }
 
             Name = name;

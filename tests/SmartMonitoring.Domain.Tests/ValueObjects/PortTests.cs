@@ -19,7 +19,7 @@ namespace SmartMonitoring.Domain.Tests
         [InlineData(65535)]
         public void ShouldCreateForValidNumber(int value)
         {
-            Assert.Equal(value.ToString(), new Port(value).ToString());
+            Assert.Equal<int>(value, new Port(value));
         }
     }
 }

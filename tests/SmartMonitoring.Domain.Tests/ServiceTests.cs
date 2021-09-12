@@ -15,7 +15,7 @@ namespace SmartMonitoring.Domain.Tests
             var port = new Port(8080);
             var maintainer = new Email("test@gmail.com");
 
-            Assert.Throws<InvalidLabelException>(() => new Service(name, port, maintainer, null));
+            Assert.Throws<EmptyLabelListException>(() => new Service(name, port, maintainer, null));
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace SmartMonitoring.Domain.Tests
             var maintainer = new Email("test@gmail.com");
             var labels = new List<Label>();
 
-            Assert.Throws<InvalidLabelException>(() => new Service(name, port, maintainer, labels));
+            Assert.Throws<EmptyLabelListException>(() => new Service(name, port, maintainer, labels));
         }
 
         [Fact]
@@ -44,12 +44,12 @@ namespace SmartMonitoring.Domain.Tests
 
             var service = new Service(name, port, maintainer, labels);
 
-            Assert.Equal("service1", service.Name.ToString());
-            Assert.Equal("8080", service.Port.ToString());
-            Assert.Equal("test@gmail.com", service.Maintainer.ToString());
+            Assert.Equal("service1", service.Name);
+            Assert.Equal<int>(8080, service.Port);
+            Assert.Equal("test@gmail.com", service.Maintainer);
             Assert.Equal(2, service.Labels.Count());
-            Assert.Equal("key1:value1", service.Labels.ElementAt(0).ToString());
-            Assert.Equal("key2:value2", service.Labels.ElementAt(1).ToString());
+            Assert.Equal("key1:value1", service.Labels.ElementAt(0));
+            Assert.Equal("key2:value2", service.Labels.ElementAt(1));
         }
     }
 }

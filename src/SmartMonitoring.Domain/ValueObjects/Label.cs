@@ -34,9 +34,14 @@ namespace SmartMonitoring.Domain.ValueObjects
             return match.Success;
         }
 
-        public override string ToString()
+        public static implicit operator Label(string value)
         {
-            return _value;
+            return new Label(value);
+        }
+
+        public static implicit operator string(Label label)
+        {
+            return label._value;
         }
     }
 }

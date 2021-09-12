@@ -36,9 +36,14 @@ namespace SmartMonitoring.Domain.ValueObjects
             return true;
         }
 
-        public override string ToString()
+        public static implicit operator Name(string value)
         {
-            return _value;
+            return new Name(value);
+        }
+
+        public static implicit operator string(Name name)
+        {
+            return name._value;
         }
     }
 }

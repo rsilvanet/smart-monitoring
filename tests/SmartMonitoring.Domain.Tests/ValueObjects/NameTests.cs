@@ -28,7 +28,7 @@ namespace SmartMonitoring.Domain.Tests
         [InlineData("30characterslooooooooooooooong")]
         public void ShouldCreateForValidValue(string value)
         {
-            Assert.Equal(value, new Name(value).ToString());
+            Assert.Equal(value, new Name(value));
         }
 
         [Theory]
@@ -37,7 +37,7 @@ namespace SmartMonitoring.Domain.Tests
         [InlineData(" value ")]
         public void ShouldTrimTheValue(string value)
         {
-            Assert.Equal(value.Trim(), new Name(value).ToString());
+            Assert.Equal(value.Trim(), new Name(value));
         }
     }
 }
