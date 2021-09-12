@@ -39,5 +39,20 @@ namespace SmartMonitoring.Domain.Tests
         {
             Assert.Equal(value.Trim(), new Name(value));
         }
+
+        [Theory]
+        [InlineData("name1", "name1", true)]
+        [InlineData("name1", "name2", false)]
+        public void ShouldBeAbleToCompareTwoValues(string value1, string value2, bool expected)
+        {
+            var name1 = new Name(value1);
+            var name2 = new Name(value2);
+
+            Assert.Equal(expected, name1 == name2);
+            Assert.Equal(expected, name1 == value2);
+            Assert.Equal(expected, name1.Equals(name2));
+            Assert.Equal(expected, name1.Equals(value2));
+            Assert.Equal(expected, value1.Equals(name2));
+        }
     }
 }

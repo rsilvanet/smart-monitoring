@@ -36,6 +36,22 @@ namespace SmartMonitoring.Domain.ValueObjects
             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Name name)
+                return _value.Equals(name._value);
+
+            if (obj is string stringName)
+                return _value.Equals(stringName);
+
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return _value.GetHashCode();
+        }
+
         public static implicit operator Name(string value)
         {
             return new Name(value);
