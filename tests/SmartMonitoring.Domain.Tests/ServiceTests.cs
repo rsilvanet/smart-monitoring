@@ -1,5 +1,6 @@
 using SmartMonitoring.Domain.Exceptions;
 using SmartMonitoring.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -24,9 +25,8 @@ namespace SmartMonitoring.Domain.Tests
             var name = new Name("service1");
             var port = new Port(8080);
             var maintainer = new Email("test@gmail.com");
-            var labels = new List<Label>();
 
-            Assert.Throws<EmptyLabelListException>(() => new Service(name, port, maintainer, labels));
+            Assert.Throws<EmptyLabelListException>(() => new Service(name, port, maintainer, Array.Empty<Label>()));
         }
 
         [Fact]
@@ -44,6 +44,7 @@ namespace SmartMonitoring.Domain.Tests
 
             var service = new Service(name, port, maintainer, labels);
 
+            Assert.NotEqual(default, service.Id);
             Assert.Equal("service1", service.Name);
             Assert.Equal<int>(8080, service.Port);
             Assert.Equal("test@gmail.com", service.Maintainer);
@@ -87,10 +88,7 @@ namespace SmartMonitoring.Domain.Tests
             Assert.Equal("test@gmail.com", service.Maintainer);
             Assert.Equal(2, service.Labels.Count());
 
-            var newLabels = new List<Label>
-            {
-                "key3:value3"
-            };
+            var newLabels = new List<Label> { "key3:value3" };
 
             service.Update("service2", 8081, "test2@gmail.com", newLabels);
 
@@ -99,6 +97,32 @@ namespace SmartMonitoring.Domain.Tests
             Assert.Equal("test2@gmail.com", service.Maintainer);
             Assert.Single(service.Labels);
             Assert.Equal("key3:value3", service.Labels.ElementAt(0));
+        }
+
+        [Fact]
+        public void ShouldNotChangeTheIdWhenUpdating()
+        {
+            var labels = new List<Label> { "key1:value1" };
+            var service = new Service("service1", 8080, "test@gmail.com", labels);
+            var idBeforeUpdate = service.Id;
+
+            service.Update("service2", 8081, "test2@gmail.com", labels);
+
+            Assert.Equal(idBeforeUpdate, service.Id);
+        }
+
+        [Fact]
+        public void ShouldLoadAllFieldsCorrectly()
+        {
+            var id = Guid.NewGuid();
+            var labels = new List<Label> { "key1:value1" };
+            var service = Service.Load(id, "service1", 8080, "test@gmail.com", labels);
+
+            Assert.Equal(id, service.Id);
+            Assert.Equal("service1", service.Name);
+            Assert.Equal<int>(8080, service.Port);
+            Assert.Equal("test@gmail.com", service.Maintainer);
+            Assert.Single(service.Labels);
         }
     }
 }
