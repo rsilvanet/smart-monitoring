@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartMonitoring.MemoryDatab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartMonitoring.MemoryDatabase.Tests", "tests\SmartMonitoring.MemoryDatabase.Tests\SmartMonitoring.MemoryDatabase.Tests.csproj", "{CAB734D1-4512-4868-A160-23BB50D0FD1F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartMonitoring.API", "src\SmartMonitoring.API\SmartMonitoring.API.csproj", "{30DF875C-F8F2-4DB6-B68F-DE08EE125794}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,18 @@ Global
 		{CAB734D1-4512-4868-A160-23BB50D0FD1F}.Release|x64.Build.0 = Release|Any CPU
 		{CAB734D1-4512-4868-A160-23BB50D0FD1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{CAB734D1-4512-4868-A160-23BB50D0FD1F}.Release|x86.Build.0 = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|x64.Build.0 = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Debug|x86.Build.0 = Debug|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|x64.ActiveCfg = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|x64.Build.0 = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|x86.ActiveCfg = Release|Any CPU
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +126,7 @@ Global
 		{E2C2A8D2-8DB7-4F08-A457-E603A3099BD6} = {0A25D177-3BD4-43D2-82DB-A4B190C9D0CA}
 		{7D98329B-AD95-4F8B-90B4-258BDBD28BAD} = {5736AC2D-9B4B-4176-8B5D-6B1B64198949}
 		{CAB734D1-4512-4868-A160-23BB50D0FD1F} = {0A25D177-3BD4-43D2-82DB-A4B190C9D0CA}
+		{30DF875C-F8F2-4DB6-B68F-DE08EE125794} = {5736AC2D-9B4B-4176-8B5D-6B1B64198949}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F2CAE85-8140-4A59-9A8C-0FF0503984DB}

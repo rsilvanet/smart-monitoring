@@ -7,7 +7,7 @@ namespace SmartMonitoring.MemoryDatabase
 {
     public static class ServiceCollectionExtensions
     {
-        public static void LoadMemorydDatabase(this IServiceCollection services)
+        public static void AddMemorydDatabase(this IServiceCollection services)
         {
             services.AddDbContext<SmartMonitoringDbContext>(options =>
             {

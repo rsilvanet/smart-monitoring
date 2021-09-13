@@ -15,7 +15,7 @@ namespace SmartMonitoring.Business.UseCases.Create
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<Service> ExecuteAsync(ISaveServiceCommand command)
+        public async Task<Service> ExecuteAsync(IServiceCommand command)
         {
             var nameAlreadyInUse = await _serviceRepository.ExistsAsync(command.Name);
 

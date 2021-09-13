@@ -30,7 +30,9 @@ namespace SmartMonitoring.MemoryDatabase.Repositories
 
         public async Task<IEnumerable<Service>> GetAllAsync()
         {
-            var dbServices = await _dbContext.Services.ToListAsync();
+            var dbServices = await _dbContext.Services
+                .Include(s => s.Labels)
+                .ToListAsync();
 
             return dbServices.Select(s => ToDomain(s));
         }
@@ -38,6 +40,7 @@ namespace SmartMonitoring.MemoryDatabase.Repositories
         public async Task<IEnumerable<Service>> GetByLabelAsync(Label label)
         {
             var dbServices = await _dbContext.Services
+                .Include(s => s.Labels)
                 .Where(s => s.Labels.Any(l => l.Value == label))
                 .ToListAsync();
 
@@ -51,7 +54,10 @@ namespace SmartMonitoring.MemoryDatabase.Repositories
 
         public async Task<Service> GetByNameAsync(Name name)
         {
-            var dbService = await _dbContext.Services.SingleOrDefaultAsync(s => s.Name == name);
+            var dbService = await _dbContext.Services
+                .Include(s => s.Labels)
+                .Where(s => s.Name == name)
+                .SingleOrDefaultAsync();
 
             if (dbService != null)
             {
@@ -78,7 +84,10 @@ namespace SmartMonitoring.MemoryDatabase.Repositories
 
         public async Task UpdateAsync(Service service)
         {
-            var entity = await _dbContext.Services.SingleAsync(x => x.Id == service.Id);
+            var entity = await _dbContext.Services
+                .Include(s => s.Labels)
+                .Where(s => s.Id == service.Id)
+                .SingleAsync();
 
             entity.Name = service.Name;
             entity.Port = service.Port;

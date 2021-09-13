@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SmartMonitoring.Business.Tests.Commands
 {
-    public class TestSaveServiceCommand : ISaveServiceCommand
+    public class TestSaveServiceCommand : IServiceCommand
     {
         public Name Name { get; set; }
         public Port Port { get; set; }

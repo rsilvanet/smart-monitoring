@@ -16,7 +16,7 @@ namespace SmartMonitoring.Business.UseCases.Create
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<Service> ExecuteAsync(Name name, ISaveServiceCommand command)
+        public async Task<Service> ExecuteAsync(Name name, IServiceCommand command)
         {
             var service = await _serviceRepository.GetByNameAsync(name);
 
