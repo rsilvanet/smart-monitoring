@@ -1,5 +1,6 @@
 ﻿using SmartMonitoring.Domain;
 using SmartMonitoring.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
