@@ -34,7 +34,7 @@ Unit tests were added for the different layers of the application and are writte
 
 * **SmartMonitoring.MemoryDatabase**: Contains the implementation and configuration necessary to use Entity Framework to connect to an in-memory database. Repository interfaces defined in the business level are implemented in this scope and such implementations are later on injected via dependency injection on the API scope.
 
-* **SmartMonitoring.API**: Contains the controller definitions that will become the API endpoints previously described. The controller actions will call the necessary use cases and services from the business scope that were injected at the startup.
+* **SmartMonitoring.API**: Contains the controller definitions that will become the API endpoints described at the beginning of this file. The controller actions will call the necessary use cases and services from the business scope that were injected at the startup.
 
 ## How to run
 
@@ -48,8 +48,8 @@ Both commands will start the application on `http://localhost:5000`. If ran with
 
 * In a development environment it would probably be better to configure a database with a docker image instead of using an in-memory database which is reseted every time the application is restarted. The `docker-compose.xml` could be extended to also create a container for the database image then.
 
-* There are arguments for not throwing exceptions when dealing with expected validation errors as it's done in some domain entities and value objects. This can result in performance for the application depending on the load and on how often such exceptions would be raised. The payoff is that the custom descriptive exceptions are easy to read and understand in the code, but they could be replaced by a different solution that would deal with the errors as messages that can be read later instead. In the end, it is a design decision that needs to be made.
+* There are arguments for not throwing exceptions when dealing with expected validation errors as it's done in some domain entities and value objects. This can result in performance issues for the application depending on the load and on how often such exceptions would be raised. The payoff is that custom descriptive exceptions are easy to read and understand in the code, but they could be replaced by a different solution that would deal with the errors as messages that can be read later instead. In the end, it is a design decision to be made depending on the context of each application.
 
-* The service tags in the database are not reused in case they already exist. That means that if `service1` is created with the tag `groups:apis` and `service2` is later added with the same tag, two separate entries will be created in the database. This is also a design decision that can have an impact depending on how these tags are used by the system.
+* The service tags are not reused in case they already exist. This means that if `service1` is created with the tag `groups:apis` and `service2` is later added with the same tag, two separate tags will be created in the database. This is also a design decision with pros and cons depending on how tags are used by the system.
 
-* The postman collection could be extend to include some tests and serve as an integration test suite for the API layer. Since the application is configured to run with docker, such tests could even be ran in some build pipeline together with the unit tests.
+* The postman collection could be extend to include some tests and serve as an integration test suite for the API layer. Since the application is configured to run with docker, such tests could even be ran in a build pipeline together with the unit tests.
