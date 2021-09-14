@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "f334ee3f-8caa-4c3e-b924-e3bde24e16cb",
+		"name": "SmartMonitoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/services",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get service by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/services/foobar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services",
+						"foobar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get services by label",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/services?labels=groups:apis",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services"
+					],
+					"query": [
+						{
+							"key": "labels",
+							"value": "groups:apis"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"foobar\",\r\n    \"port\": 8080,\r\n    \"maintainer\": \"test@gmail.com\",\r\n    \"labels\": [\r\n        \"groups:apis\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/services",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update service",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"foobar\",\r\n    \"port\": 8081,\r\n    \"maintainer\": \"test@gmail.com\",\r\n    \"labels\": [\r\n        \"groups:apis\",\r\n        \"groups:backends\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/services/foobar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services",
+						"foobar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete service",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/services/foobar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"services",
+						"foobar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
