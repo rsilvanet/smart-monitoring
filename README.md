@@ -42,6 +42,8 @@ The application can be ran with a simple `dotnet run` from `src/SmartMonitoring.
 
 Both commands will start the application on `http://localhost:5000`. If ran with the `dotnet run` it will also make an https available on `https://localhost:5001`. A swagger definition can be found by navigating to `/swagger`. A postman collection is also available inside the `postman` directory which has all the available requests pre-configured to be executed against the localhost API.
 
+![image](https://user-images.githubusercontent.com/9820133/133346902-226b4a29-9c70-4b9a-b9cf-10d340ba9c6e.png)
+
 ## Possible improvements
 
 * In a development environment it would probably be better to configure a database with a docker image instead of using an in-memory database which is reseted every time the application is restarted. The `docker-compose.xml` could be extended to also create a container for the database image then.
