@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using SmartMonitoring.API.Middlewares;
 using SmartMonitoring.Business;
 using SmartMonitoring.MemoryDatabase;
 
@@ -44,6 +45,7 @@ namespace SmartMonitoring.API
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SmartMonitoring.API v1"));
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseMiddleware<CustomExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

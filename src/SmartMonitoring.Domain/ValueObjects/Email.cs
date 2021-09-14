@@ -31,6 +31,11 @@ namespace SmartMonitoring.Domain.ValueObjects
             }
         }
 
+        public override string ToString()
+        {
+            return _value;
+        }
+
         public static implicit operator Email(string value)
         {
             return new Email(value);

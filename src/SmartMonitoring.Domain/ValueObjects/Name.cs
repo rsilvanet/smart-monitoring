@@ -52,6 +52,11 @@ namespace SmartMonitoring.Domain.ValueObjects
             return _value.GetHashCode();
         }
 
+        public override string ToString()
+        {
+            return _value;
+        }
+
         public static implicit operator Name(string value)
         {
             return new Name(value);

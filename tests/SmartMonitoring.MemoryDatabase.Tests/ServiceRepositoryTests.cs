@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SmartMonitoring.Business.Exceptions;
 using SmartMonitoring.MemoryDatabase.Repositories;
 using System;
 using System.Collections.Generic;
@@ -114,11 +115,12 @@ namespace SmartMonitoring.MemoryDatabase.Tests
         }
 
         [Fact]
-        public async void GetByNameAsync_ShouldReturnNullIfServiceDoesNotExist()
+        public async void GetByNameAsync_ShouldThrowIfServiceDoesNotExist()
         {
-            var service = await _sqlServiceRepository.GetByNameAsync("service99");
-
-            Assert.Null(service);
+            await Assert.ThrowsAsync<ServiceNotFoundException>(() =>
+            {
+                return _sqlServiceRepository.GetByNameAsync("service99");
+            });
         }
 
         [Fact]

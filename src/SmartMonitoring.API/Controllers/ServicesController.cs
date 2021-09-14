@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SmartMonitoring.API.Models.Requests;
 using SmartMonitoring.API.Models.Responses;
 using SmartMonitoring.Business.Repositories;
 using SmartMonitoring.Business.UseCases.Create;
 using SmartMonitoring.Domain;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,20 +18,18 @@ namespace SmartMonitoring.API.Controllers
         private readonly CreateServiceUseCase _createUseCase;
         private readonly UpdateServiceUseCase _updateUseCase;
         private readonly DeleteServiceUseCase _deleteUseCase;
-        private readonly ILogger<ServicesController> _logger;
 
         public ServicesController(
             IServiceRepository serviceRepository,
             CreateServiceUseCase createUseCase,
             UpdateServiceUseCase updateUseCase,
-            DeleteServiceUseCase deleteUseCase,
-            ILogger<ServicesController> logger)
+            DeleteServiceUseCase deleteUseCase
+            )
         {
             _serviceRepository = serviceRepository;
             _createUseCase = createUseCase;
             _updateUseCase = updateUseCase;
             _deleteUseCase = deleteUseCase;
-            _logger = logger;
         }
 
         [HttpGet]
@@ -59,12 +55,6 @@ namespace SmartMonitoring.API.Controllers
         public async Task<IActionResult> GetByName(string name)
         {
             var service = await _serviceRepository.GetByNameAsync(name);
-
-            if (service == null)
-            {
-                return NotFound();
-            }
-
             return Ok(new ServiceResponse(service));
         }
 

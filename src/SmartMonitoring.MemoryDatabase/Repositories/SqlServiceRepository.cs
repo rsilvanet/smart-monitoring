@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartMonitoring.Business.Exceptions;
 using SmartMonitoring.Business.Repositories;
 using SmartMonitoring.Domain;
 using SmartMonitoring.Domain.ValueObjects;
@@ -59,12 +60,12 @@ namespace SmartMonitoring.MemoryDatabase.Repositories
                 .Where(s => s.Name == name)
                 .SingleOrDefaultAsync();
 
-            if (dbService != null)
+            if (dbService == null)
             {
-                return ToDomain(dbService);
+                throw new ServiceNotFoundException(name);
             }
 
-            return null;
+            return ToDomain(dbService);
         }
 
         public async Task AddAsync(Service service)
