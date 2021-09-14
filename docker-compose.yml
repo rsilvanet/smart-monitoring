@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  api:
+    container_name: smart_monitoring_api
+    build:
+      dockerfile: ./src/SmartMonitoring.API/Dockerfile
+    ports:
+      - 5000:5000
+      - 5001:5001
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development

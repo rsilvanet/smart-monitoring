@@ -11,12 +11,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/services",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services"
 					]
@@ -30,12 +30,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/services/foobar",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services/foobar",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services",
 						"foobar"
@@ -50,12 +50,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/services?labels=groups:apis",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services?labels=groups:apis",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services"
 					],
@@ -84,12 +84,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/services",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services"
 					]
@@ -112,12 +112,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/services/foobar",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services/foobar",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services",
 						"foobar"
@@ -132,12 +132,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/services/foobar",
-					"protocol": "https",
+					"raw": "http://localhost:5000/services/foobar",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "5000",
 					"path": [
 						"services",
 						"foobar"
